@@ -25,7 +25,7 @@ class PeopleTable extends React.Component {
     }
 
     onAddClick = () => {
-        const copy = [...this.state.People];
+        const copy = [this.state.People];
         const person = {
             FirstName: this.State.FirstName,
             LastName: this.State.LastName,
@@ -47,14 +47,16 @@ class PeopleTable extends React.Component {
             <div>
                 <PersonForm onfnchange={this.onfnchange} onlnchange={this.onlnchange} onagechange={this.onagechange}
                     onAddClick={this.onAddClick} onclearclick={this.onclearclick} firstName={this.State.FirstName}
-                    lastName={this.state.lastName} age={this.state.lastName} />
-                {this.state.people.length === 0 ?
+                    lastName={this.State.LastName} age={this.State.Age} />
+                {this.State.People.length === 0 ?
                     <h1>No people added yet! Add some people</h1> :
                     <table className='table table-striped table-hover table-bordered'>
                         <thead>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Age</th>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <PersonRow people={this.State.People} />
