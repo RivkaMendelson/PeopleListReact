@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 class PeopleTable extends React.Component {
 
-    State = {
+    state = {
         FirstName: "",
         LastName: "",
         Age: "",
@@ -25,19 +25,19 @@ class PeopleTable extends React.Component {
     }
 
     onAddClick = () => {
-        const copy = [this.state.People];
+        const copy = [...this.state.People];
         const person = {
-            FirstName: this.State.FirstName,
-            LastName: this.State.LastName,
-            Age: this.State.Age
+            FirstName: this.state.FirstName,
+            LastName: this.state.LastName,
+            Age: this.state.Age
         };
 
         copy.push(person);
-        this.setState({ People: copy, firstName: '', lastName: '', age: '' });
+        this.setState({ People: copy, FirstName: '', LastName: '', Age: '' });
     }
 
-    onclearclick = () => {
-        this.setState({ People: [], firstName: '', lastName: '', age: '' });
+    onClearClick = () => {
+        this.setState({ People: [], FirstName: '', LastName: '', Age: '' });
     }
 
 
@@ -46,9 +46,9 @@ class PeopleTable extends React.Component {
 
             <div>
                 <PersonForm onfnchange={this.onfnchange} onlnchange={this.onlnchange} onagechange={this.onagechange}
-                    onAddClick={this.onAddClick} onclearclick={this.onclearclick} firstName={this.State.FirstName}
-                    lastName={this.State.LastName} age={this.State.Age} />
-                {this.State.People.length === 0 ?
+                    onAddClick={this.onAddClick} onClearClick={this.onClearClick} firstName={this.state.FirstName}
+                    lastName={this.state.LastName} age={this.state.Age} />
+                {this.state.People.length === 0 ?
                     <h1>No people added yet! Add some people</h1> :
                     <table className='table table-striped table-hover table-bordered'>
                         <thead>
@@ -59,7 +59,7 @@ class PeopleTable extends React.Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <PersonRow people={this.State.People} />
+                            <PersonRow people={this.state.People} />
                         </tbody>
 
                     </table>
